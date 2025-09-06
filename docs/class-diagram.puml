@@ -1,2 +1,54 @@
 @startuml
+
+package "generic.domain.model.entity" {
+    class Developer {
+        - id: UUID
+        - firstName: String
+        - lastName: String
+        + getFullName(): String
+        + isAnyNameBlank(): boolean
+        + isAnyNameEmpty(): boolean
+        + getId(): UUID
+        + getFirstName(): String
+        + getLastName(): String
+    }
+}
+
+package "generic.interfaces.rest.resources" {
+    class GreetDeveloperRequest {
+        + firstName: String
+        + lastName: String
+    }
+    class GreetDeveloperResponse {
+        + id: UUID
+        + fullName: String
+        + message: String
+    }
+}
+
+package "generic.interfaces.rest.assemblers" {
+    class DeveloperAssembler {
+        + toEntityFromRequest(request: GreetDeveloperRequest): Developer
+    }
+    class GreetDeveloperAssembler {
+        + toResourceFromEntity(developer: Developer): GreetDeveloperResponse
+    }
+}
+
+package "generic.interfaces.rest.controllers" {
+    class GreetingsController {
+        + greetDeveloper(firstName: String, lastName: String): GreetDeveloperResponse
+        + createGreeting(request: GreetDeveloperRequest): GreetDeveloperResponse
+    }
+}
+
+GreetDeveloperRequest --> DeveloperAssembler : uses
+DeveloperAssembler --> Developer : creates
+GreetingsController --> DeveloperAssembler : uses
+GreetingsController --> GreetDeveloperAssembler : uses
+GreetingsController --> GreetDeveloperRequest : uses
+GreetingsController --> GreetDeveloperResponse : returns
+GreetDeveloperAssembler --> Developer : uses
+GreetDeveloperAssembler --> GreetDeveloperResponse : creates
+
 @enduml
