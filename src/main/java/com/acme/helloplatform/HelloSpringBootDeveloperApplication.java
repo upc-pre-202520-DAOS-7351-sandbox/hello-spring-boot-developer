@@ -9,7 +9,7 @@ public class HelloSpringBootDeveloperApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(HelloSpringBootDeveloperApplication.class, args);
-        
+
         Developer mydeveloper = new Developer("John", "Doe");
         System.out.println(mydeveloper.getFullName());
 	}
