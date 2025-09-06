@@ -13,6 +13,16 @@ A simple Spring Boot application demonstrating a RESTful API for greeting develo
 - Lombok
 - Java Maven
 
+## User Stories
+The user stories for this application can be found in the [docs/user-stories](docs/user-stories.md) document.
+
+## Class Diagram
+The class diagram for this application can be found in the [docs/class-diagram](docs/class-diagram.puml) document.
+
+The following diagram shows the class hierarchy for this application:
+
+![class-diagram](https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202520-1asi0729-sandbox/hello-spring-boot-developer/refs/heads/master/docs/class-diagram.puml?token=GHSAT0AAAAAADJGFNEZSMW3VGR5GRGK7KZS2FY577Q)
+
 ## Getting Started
 1. Clone the repository:
    ```bash
